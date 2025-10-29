@@ -27,11 +27,8 @@ namespace Supplier.Tests.Services
             var entity = new SupplierEntity { Id = supplierId, Name = "Test Supplier", DocumentNumber = "Test123", Email = "xpto@xpto.com" };
             var dto = new SupplierDto { Id = supplierId, Name = "Test Supplier", DocumentNumber = "Test123", Email = "xpto@xpto.com" };
 
-            _repositoryMock.Setup(r => r.GetByIdAsync(supplierId))
-                .ReturnsAsync(entity);
-
-            _mapperMock.Setup(m => m.Map<SupplierDto>(entity))
-                .Returns(dto);
+            _repositoryMock.Setup(r => r.GetByIdAsync(supplierId)).ReturnsAsync(entity);
+            _mapperMock.Setup(m => m.Map<SupplierDto>(entity)).Returns(dto);
 
             // Act
             var result = await _service.GetByIdAsync(supplierId);
